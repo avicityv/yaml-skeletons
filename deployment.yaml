@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-deployment
+  labels:
+    app: http-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: http-server
+  template:
+    metadata:
+      labels:
+        app: http-server
+    spec:
+      containers:
+      - name: server
+        image: avicity/http-server
+        ports:
+        - containerPort: 8080
