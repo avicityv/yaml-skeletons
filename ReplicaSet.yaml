@@ -1,0 +1,23 @@
+#yaml-skeletons/ReplicaSet.yaml 
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: example
+  labels:
+    app: http-server
+spec:
+  # modify replicas according to your case
+
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: http-server
+  template:
+    metadata:
+      labels:
+        app: http-server
+    spec:
+      containers:
+      - name: server
+        image: avicity/http-server
